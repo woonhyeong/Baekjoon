@@ -17,7 +17,8 @@ DerivedData
 *.xccheckout
 *.xcworkspace
 !default.xcworkspace
-*.xccodeproj
+*.xcodeproj
+.DS_Store
 
 #CocoaPods
 Pods
