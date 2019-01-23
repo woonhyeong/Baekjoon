@@ -6,6 +6,4 @@
 //  Copyright © 2019 201302458. All rights reserved.
 //
 
-import Foundation
-
 print(readLine()!.split(separator: " ").map{Int($0)!}.reduce(0){-$0-$1})

@@ -6,8 +6,6 @@
 //  Copyright © 2019 201302458. All rights reserved.
 //
 
-import Foundation
-
 if let input = readLine() {
     print(input.split(separator: " ").map{ Int($0)! }.reduce(0){$0 + $1})
 }
