@@ -5,6 +5,9 @@
 //  Created by 이운형 on 08/02/2019.
 //  Copyright © 2019 201302458. All rights reserved.
 //
+//  유한 오토마타를 이용해 상태를 여러개로 만들어 풀 수도 있었지만,
+//  상태를 100, 100 다음의 0, 100 다음의 1, 01 의 4가지 상태로 나누어 해결했다.
+//  처음에 실수로 상태 100에서 끝나면 true를 반환하도록해서 오류가 나서 false로 바꿨더니 바로 해결되었다.
 
 var str:String = ""
 var endIndex:String.Index = str.endIndex
@@ -33,7 +36,7 @@ func state100(_ index:String.Index) -> Bool {
             return state1(iter)
         }
     }
-    return true
+    return false
 }
 
 func state01(_ index:String.Index) -> Bool {
@@ -63,7 +66,7 @@ func state0(_ index:String.Index) -> Bool {
     var iter = index
     while str[iter] == "0" {
         if iter == endIndex {
-            return true
+            return false
         }
         iter = str.index(after: iter)
     }
