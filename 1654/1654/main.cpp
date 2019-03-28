@@ -13,7 +13,7 @@ int main() {
     int k, n;
     scanf("%d %d", &k, &n);
     
-    long long  min = 1;
+    long long min = 1;
     long long max = 0;
     for (int i = 0; i < k; i++) {
         scanf("%lld", &l[i]);
@@ -34,5 +34,5 @@ int main() {
         }
         r = 0;
     }
-    printf("%lld\n", min-1);
+    printf("%lld\n", max);
 }
