@@ -12,17 +12,10 @@ int main() {
     int e,s,m;
     scanf("%d %d %d", &e,&s,&m);
     
-    int n1=1,n2=1,n3=1;
     for (int i = 1; i <= 15*28*19; i++) {
-        if (n1 == e && n2 == s && n3 ==m) {
+        if ((i-1)%15+1 == e && (i-1)%28+1 == s && (i-1)%19+1 == m) {
             printf("%d\n",i);
             return 0;
         }
-        n1+=1;
-        n2+=1;
-        n3+=1;
-        if (n1 > 15) n1 = 1;
-        if (n2 > 28) n2 = 1;
-        if (n3 > 19) n3 = 1;
     }
 }
