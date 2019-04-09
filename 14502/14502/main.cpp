@@ -77,20 +77,21 @@ int poison() {
     return ans;
 }
 
-void solve(int cnt) {
+void solve(int idx, int cnt) {
     if (cnt == 3) {
-        int sum = poison();
-        if (result < sum) result = sum;
+        int ans = poison();
+        if (result < ans) {
+            result = ans;
+        }
         return;
     }
-
-    for (int i = 0; i<n; i++) {
-        for (int k = 0; k<m; k++) {
-            if (map[i][k] == 0) {
-                map[i][k] = 1;
-                solve(cnt+1);
-                map[i][k] = 0;
-            }
+    
+    for (int i = idx+1; i < n*m; i++) {
+        int x = i/m, y = i%m;
+        if (map[x][y] == 0) {
+            map[x][y] = 1;
+            solve(i,cnt+1);
+            map[x][y] = 0;
         }
     }
 }
@@ -99,13 +100,13 @@ int main() {
     ios::sync_with_stdio(0);
     cin.tie(0);
     input();
-    for (int i = 0; i<n; i++) {
-        for (int k = 0; k<m; k++) {
-            if (map[i][k] == 0) {
-                map[i][k] = 1;
-                solve(1);
-                map[i][k] = 0;
-            }
+    for (int i = 0; i<n*m; i++) {
+        int x = i/m;
+        int y = i%m;
+        if (map[x][y] == 0) {
+            map[x][y] = 1;
+            solve(0,1);
+            map[x][y] = 0;
         }
     }
     printf("%d\n",result);
