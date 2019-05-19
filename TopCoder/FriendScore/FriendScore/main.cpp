@@ -43,11 +43,42 @@ public:
         }
         return ans;
     }
+    
+//    int highestScore(vector <string> friends) {
+//        vector<long long> mask(friends.size());
+//
+//        for (int i = 0; i < friends.size(); i++) {
+//            for (int k = 0; k < friends.size(); k++) {
+//                if (friends[i][k] == 'Y') {
+//                    mask[i] |= 1 << k;
+//                }
+//            }
+//        }
+//
+//        int ans = -1;
+//
+//        for (int i = 0; i < friends.size(); i++) {
+//            int cnt = 0;
+//
+//            for (int k = 0; k < friends[i].size(); k++) {
+//                if (i == k) continue;
+//
+//                if (friends[i][k] == 'Y') {
+//                    cnt++;
+//                } else if (mask[i] & mask[k]) {
+//                    cnt++;
+//                }
+//            }
+//            ans = max(ans, cnt);
+//        }
+//
+//        return ans;
+//    }
 };
 
 int main() {
     FriendScore f = FriendScore();
     
-    vector<string> friends = { "NYNNN", "YNYNN", "NYNYN", "NNYNY", "NNNYN"};
+    vector<string> friends = { "NNN","NNN","NNN"};
     cout << f.highestScore(friends) << '\n';
 }
