@@ -73,5 +73,5 @@ int main() {
     vector<int> moveCol = {0,1,0,-1};
     
     MazeMaker m = MazeMaker();
-    print("%d\n",m.longestPath(maze, startRow, startCol, moveRow, moveCol));
+    printf("%d\n",m.longestPath(maze, startRow, startCol, moveRow, moveCol));
 }
