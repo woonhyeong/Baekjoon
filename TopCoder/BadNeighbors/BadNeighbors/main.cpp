@@ -21,7 +21,7 @@ public:
         int dp_01[41] = {0,};
         int dp_02[41] = {0,};
         
-        for (int i = 0; i < donations.size()-1; i++) {
+        for (int i = 0; i < donaxqtions.size()-1; i++) {
             dp_01[i] = donations[i];
             
             if (i > 0) dp_01[i] = max(dp_01[i],dp_01[i-1]);
