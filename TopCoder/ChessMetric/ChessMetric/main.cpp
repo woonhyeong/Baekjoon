@@ -8,7 +8,6 @@
 
 #include <iostream>
 #include <vector>
-#include <queue>
 using namespace std;
 
 /*
@@ -22,8 +21,8 @@ public:
         int sy = start[0], sx = start[1];
         int ey = end[0], ex = end[1];
         
-        int dp[101][101][51] = {0,};
-        dp[sy][sx][0] = 0;
+        long long dp[101][101][51] = {0,};
+        dp[sy][sx][0] = 1;
         
         for (int move = 1; move <= numMoves; move++) {
             for (int x = 0; x < size; x++) {
@@ -33,7 +32,7 @@ public:
                         
                         if (nx < 0 || nx >= size || ny <0 || ny >= size) continue;
                         
-                        dp[ny][nx][move] += dp[y][x][move-1] + 1;
+                        dp[ny][nx][move] += dp[y][x][move-1];
                     }
                 }
             }
@@ -45,5 +44,5 @@ public:
 
 int main() {
     ChessMetric c = ChessMetric();
-    cout << c.howMany(3, {0,0}, {1,2}, 1) << '\n';
+    cout << c.howMany(100, {0,0}, {0,99}, 50) << '\n';
 }
