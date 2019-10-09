@@ -8,43 +8,39 @@
 
 #include <stdio.h>
 #include <algorithm>
+using namespace std;
 
 int a[8];
 int n;
 
-bool next() {
-    int i = n-1;
-    while (i > 0 && a[i-1] >= a[i] ) i-=1;
-    if (i <= 0) return false;
+void input() {
+    scanf("%d",&n);
     
-    int j = n-1;
-    while (a[i-1] >= a[j]) j-=1;
-    int temp = a[i-1];
-    a[i-1] = a[j];
-    a[j] = temp;
-    
-    j = n-1;
-    while (i<j) {
-        temp = a[i];
-        a[i] = a[j];
-        a[j] = temp;
-        i+=1;
-        j-=1;
+    for (int i = 0; i < n; i++) {
+        scanf("%d",&a[i]);
     }
-    return true;
+}
+
+void solve() {
+    int max_sum = 0;
+    
+    sort(a,a+n);
+    
+    do {
+        int sum = 0;
+        for (int i = 0; i < n-1; i++) {
+            sum += (a[i] - a[i+1]>0 ? a[i]-a[i+1] : a[i+1]-a[i]);
+        }
+        
+        if (max_sum < sum) {
+            max_sum = sum;
+        }
+    } while (next_permutation(a,a+n));
+    
+    printf("%d\n",max_sum);
 }
 
 int main() {
-    scanf("%d",&n);
-    for (int i = 0; i<n; i++) scanf("%d",&a[i]);
-    std::sort(a,a+n);
-    int max = 0, r = 0;
-    do {
-        r = 0;
-        for (int i = 1; i < n; i++) {
-            r = r + (a[i-1]-a[i] > 0? a[i-1]-a[i]:-(a[i-1]-a[i]));
-        }
-        if (max < r) max = r;
-    } while(next());
-    printf("%d\n",max);
+    input();
+    solve();
 }
